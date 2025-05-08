@@ -19,10 +19,7 @@ if "thread_id" not in st.session_state:
 
 # Sidebar
 st.sidebar.header("🔧 Configurações")
-api_url = st.sidebar.text_input(
-    "🔗 URL da API",
-    value=os.getenv("API_URL", "http://localhost:8000")
-)
+api_url = st.sidebar.text_input("🔗 URL da API")
 openai_key = st.sidebar.text_input("🔑 Chave do GPT", type="password")
 thread_id = st.sidebar.text_input("ID de Teste")
 
