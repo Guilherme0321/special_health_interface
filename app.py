@@ -16,16 +16,12 @@ with tab2:
     st.title("📖 Como Usar o Chatbot")
     
     st.header("🔧 Configuração Inicial")
-    st.markdown("""
-    **1. URL da API**: Insira o endpoint da sua API de chatbot
-    - Exemplo: `https://api.meuservidor.com/chat`
-    - Exemplo: `http://localhost:8000/api/chat`
-    
-    **2. Chave do GPT**: Sua chave de API do OpenAI
+    st.markdown("""    
+    **1. Chave do GPT**: Sua chave de API do OpenAI
     - Formato: `sk-proj-xxxxxxxxxxxxxxxxxxxxxxxx`
     - ⚠️ **Importante**: Mantenha sua chave segura e não a compartilhe
     
-    **3. ID de Teste**: ID personalizado para rastrear conversas
+    **2. ID de Teste**: ID personalizado para rastrear conversas
     - Se deixado em branco, será gerado automaticamente
     """)
     
@@ -84,7 +80,8 @@ with tab1:
     
     # Sidebar
     st.sidebar.header("🔧 Configurações")
-    api_url = st.sidebar.text_input("🔗 URL da API")
+    #api_url = st.sidebar.text_input("🔗 URL da API")
+    api_url = 'https://web-production-6daa.up.railway.app/'
     openai_key = st.sidebar.text_input("🔑 Chave do GPT", type="password")
     thread_id = st.sidebar.text_input("ID de Teste")
     
@@ -115,7 +112,7 @@ with tab1:
                     mime="text/csv"
                 )
             else:
-                st.sidebar.warning(f"⚠️ Erro ao baixar: status {json.loads(response.content.decode('utf-8'))['message']}")
+                st.sidebar.warning(f"⚠️ Erro ao baixar: {json.loads(response.content.decode('utf-8'))['message']}")
         except Exception as e:
             st.sidebar.error(f"❌ Erro no download: {e}")
     
