@@ -9,7 +9,13 @@ st.set_page_config(page_title="Chat com API", layout="wide")
 os.environ["STREAMLIT_SERVER_HEADLESS"] = "true"
 
 # URL da API (ajuste se necessário)
+
+# Para produção
 API_URL = "https://web-production-6daa.up.railway.app"
+
+# Para testes
+#API_URL = "http://localhost:8000"
+
 
 # Estado inicial
 if "access_token" not in st.session_state:
@@ -64,10 +70,9 @@ if page == "📖 Como Usar":
 
     1. **Faça o login** com suas credenciais válidas.
     2. **Após o login**, vá para a aba **💬 Chatbot**.
-    3. **Insira sua chave da OpenAI** na barra lateral.
-    4. **Digite sua mensagem** no campo de entrada ao final da página.
-    5. **As mensagens serão armazenadas** localmente e também podem ser salvas via botão de exportação.
-    6. **Use a opção "Encerrar Sessão"** para sair com segurança.
+    3. **Digite sua mensagem** no campo de entrada ao final da página.
+    4. **As mensagens serão armazenadas** localmente e também podem ser salvas via botão de exportação.
+    5. **Use a opção "Encerrar Sessão"** para sair com segurança.
 
     #### Funcionalidades extras:
     - **💾 Baixar histórico (.csv)**: Exporta todas as conversas.
@@ -77,8 +82,8 @@ else:
     st.title("🤖 Chatbot via API")
 
     # Sidebar
-    st.sidebar.header("🔧 Configurações")
-    openai_key = st.sidebar.text_input("🔑 Chave do GPT", type="password")
+    #st.sidebar.header("🔧 Configurações")
+    #openai_key = st.sidebar.text_input("🔑 Chave do GPT", type="password")
 
     # Botões extras
     if st.sidebar.button("💾 Salvar Histórico (.csv)"):
@@ -119,7 +124,7 @@ else:
         st.session_state.messages.append({"role": "user", "content": user_input})
 
         json_data = {
-            "openai_key": openai_key,
+            #"openai_key": openai_key,
             "content": user_input
         }
         headers = {"Authorization": f"Bearer {st.session_state.access_token}"}
